@@ -1,0 +1,2 @@
+SimpleNavigation.register_renderer my_renderer: Custom
+SimpleNavigation.register_renderer my_renderer_crumbs: CustomBreadcrumbs

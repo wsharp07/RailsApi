@@ -7,11 +7,11 @@ SimpleNavigation::Configuration.run do |navigation|
   navigation.renderer = Custom
 
   # Specify the class that will be applied to active navigation items.
-  # Defaults to 'selected' navigation.selected_class = 'your_selected_class'
+  navigation.selected_class = 'active'
 
   # Specify the class that will be applied to the current leaf of
   # active navigation items. Defaults to 'simple-navigation-active-leaf'
-  navigation.active_leaf_class = 'active'
+  navigation.active_leaf_class = ''
 
   # Item keys are normally added to list items as id.
   # This setting turns that off
@@ -59,8 +59,12 @@ SimpleNavigation::Configuration.run do |navigation|
     # Add an item which has a sub navigation (same params, but with block)
     primary.item :key_2, 'UI Features', '#', { :icon => 'icon-diamond' } do |sub_nav|
       # Add an item to the sub navigation (same params again)
-     sub_nav.item :key_2_1, 'name', '#'
+     sub_nav.item :key_2_1, 'sub 1', '#'
+     sub_nav.item :key_2_2, 'sub 2', '#'
+     sub_nav.item :key_2_3, 'sub 3', '#'
     end
+
+    primary.item :key_3, 'Settings', '/Settings', {:icon => 'icon-settings' }
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,

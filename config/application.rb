@@ -23,6 +23,6 @@ module RailsApi
 
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
     config.assets.precompile += %w( application-layout.css application-print.css application-ie.css )
-    config.assets.precompile += %w( application-lt-ie9.js application-layout.js )
+    config.assets.precompile += %w( application-lt-ie9.js application-layout.js login-layout.js )
   end
 end

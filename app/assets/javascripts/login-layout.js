@@ -10,15 +10,4 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require jquery-ui
-//= require turbolinks
-//= require bootstrap/dist/js/bootstrap
-//= require bootstrap-hover-dropdown/bootstrap-hover-dropdown
-//= require jquery-slimscroll/jquery.slimscroll
-//= require blockui/jquery.blockUI
-//= require jquery.cookie/jquery.cookie
-//= require jquery-validation/dist/jquery.validate
-// Missing uniform js
-//= require bootstrap-switch/dist/js/bootstrap-switch
+//= require login/login

@@ -125,27 +125,6 @@ var Login = function() {
 
     var handleRegister = function() {
 
-        function format(state) {
-            if (!state.id) return state.text; // optgroup
-            return "<img class='flag' src='../../assets/global/img/flags/" + state.id.toLowerCase() + ".png'/>&nbsp;&nbsp;" + state.text;
-        }
-
-        if (jQuery().select2) {
-	        $("#select2_sample4").select2({
-	            placeholder: '<i class="fa fa-map-marker"></i>&nbsp;Select a Country',
-	            allowClear: true,
-	            formatResult: format,
-	            formatSelection: format,
-	            escapeMarkup: function(m) {
-	                return m;
-	            }
-	        });
-
-
-	        $('#select2_sample4').change(function() {
-	            $('.register-form').validate().element($(this)); //revalidate the chosen dropdown value and show error or success message for the input
-	        });
-    	}
 
         $('.register-form').validate({
             errorElement: 'span', //default input error message container
@@ -154,42 +133,27 @@ var Login = function() {
             ignore: "",
             rules: {
 
-                fullname: {
+                'user[name]': {
                     required: true
                 },
-                email: {
+                'user[email]': {
                     required: true,
                     email: true
                 },
-                address: {
+                'user[username]': {
                     required: true
                 },
-                city: {
-                    required: true
+                'user[password]': {
+                    required: true,
+                    minlength: 6
                 },
-                country: {
-                    required: true
-                },
-
-                username: {
-                    required: true
-                },
-                password: {
-                    required: true
-                },
-                rpassword: {
+                'user[password_confirmation]': {
                     equalTo: "#register_password"
-                },
-
-                tnc: {
-                    required: true
                 }
             },
 
             messages: { // custom messages for radio buttons and checkboxes
-                tnc: {
-                    required: "Please accept TNC first."
-                }
+
             },
 
             invalidHandler: function(event, validator) { //display error alert on form submit   
@@ -207,9 +171,7 @@ var Login = function() {
             },
 
             errorPlacement: function(error, element) {
-                if (element.attr("name") == "tnc") { // insert checkbox errors after the container                  
-                    error.insertAfter($('#register_tnc_error'));
-                } else if (element.closest('.input-icon').size() === 1) {
+                if (element.closest('.input-icon').size() === 1) {
                     error.insertAfter(element.closest('.input-icon'));
                 } else {
                     error.insertAfter(element);
@@ -239,7 +201,7 @@ var Login = function() {
             jQuery('.login-form').show();
             jQuery('.register-form').hide();
         });
-    }
+    };
 
     return {
         //main function to initiate the module

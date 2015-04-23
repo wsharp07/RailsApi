@@ -32,6 +32,7 @@ License: You must have a valid license purchased only from themeforest(the above
   <%= stylesheet_link_tag    'application-layout', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'application-print', media: 'print', 'data-turbolinks-track' => true %>
   <!-- END GLOBAL MANDATORY STYLES -->
+  <%= javascript_include_tag 'application-jquery', 'data-turbolinks-track' => true %>
   <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <!-- END HEAD -->
@@ -442,6 +443,10 @@ License: You must have a valid license purchased only from themeforest(the above
       <!-- BEGIN PAGE HEADER-->
       <!-- BEGIN PAGE HEAD -->
       <div class="page-head">
+        <!-- PAGE ALERTS -->
+        <% flash.each do |message_type, message| %>
+            <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
         <!-- BEGIN PAGE TITLE -->
         <div class="page-title">
           <%= yield :title %>
@@ -468,6 +473,7 @@ License: You must have a valid license purchased only from themeforest(the above
 </div>
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
+<%= debug(params) if Rails.env.development? %>
 <div class="page-footer">
   <div class="page-footer-inner">
     2014 &copy; Metronic by keenthemes.
@@ -476,6 +482,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <i class="icon-arrow-up"></i>
   </div>
 </div>
+
 <!-- END FOOTER -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->

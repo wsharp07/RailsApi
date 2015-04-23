@@ -1,2 +1,43 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<script type="text/javascript">
+  $(document).ready(function() {
+      $(".register-form").show();
+  });
+
+</script>
+
+<%= form_for(@user, :html => {:class => 'register-form'}) do |f| %>
+    <h3>Sign Up</h3>
+    <%= render 'shared/error_messages' %>
+    <p class="hint">
+      Enter your personal details below:
+    </p>
+    <div class="form-group">
+      <%= f.label :name, class: 'control-label visible-ie8 visible-ie9' %>
+      <%= f.text_field :name, class: 'form-control placeholder-no-fix', placeholder: 'Full Name' %>
+    </div>
+    <div class="form-group">
+      <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+      <%= f.label :email, class: 'control-label visible-ie8 visible-ie9' %>
+      <%= f.text_field :email, class: 'form-control placeholder-no-fix', placeholder: 'Email' %>
+    </div>
+    <p class="hint">
+      Enter your account details below:
+    </p>
+    <div class="form-group">
+      <%= f.label :username, class: 'control-label visible-ie8 visible-ie9' %>
+      <%= f.text_field :username, class: 'form-control placeholder-no-fix', autocomplete: 'off', placeholder: 'Username'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :password, class: 'control-label visible-ie8 visible-ie9' %>
+      <%= f.password_field :password, class: 'form-control placeholder-no-fix', id: 'register_password', autocomplete: 'off', placeholder: 'Password' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation, class: 'control-label visible-ie8 visible-ie9' %>
+      <%= f.password_field :password_confirmation, class: 'form-control placeholder-no-fix', autocomplete: 'off', placeholder: 'Re-type Your Password' %>
+    </div>
+    <div class="form-actions">
+      <%= f.button "Submit", class: 'btn btn-success uppercase pull-right', id: 'register-submit-btn', type: 'submit' %>
+    </div>
+<% end %>
+
+<!-- END REGISTRATION FORM -->

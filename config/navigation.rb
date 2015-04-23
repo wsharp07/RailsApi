@@ -56,15 +56,23 @@ SimpleNavigation::Configuration.run do |navigation|
     #
     primary.item :key_1, 'Dashboard', '/', {:class => 'start', :icon => 'icon-home' }
 
-    # Add an item which has a sub navigation (same params, but with block)
-    primary.item :key_2, 'UI Features', '#', { :icon => 'icon-diamond' } do |sub_nav|
-      # Add an item to the sub navigation (same params again)
-     sub_nav.item :key_2_1, 'sub 1', '#'
-     sub_nav.item :key_2_2, 'sub 2', '#'
-     sub_nav.item :key_2_3, 'sub 3', '#'
+
+
+    primary.item :key_2, 'RMA', '#', { :icon => 'icon-wrench' } do |sub|
+      sub.item :key_2_1, 'New', '#'
+      sub.item :key_2_2, 'View', '#'
+      sub.item :key_2_3, 'Search', '#'
     end
 
-    primary.item :key_3, 'Settings', '/Settings', {:icon => 'icon-settings' }
+    # Add an item which has a sub navigation (same params, but with block)
+    primary.item :key_3, 'Time Off', '#', { :icon => 'icon-clock' } do |sub_nav|
+      # Add an item to the sub navigation (same params again)
+      sub_nav.item :key_3_1, 'New Request', '#'
+      sub_nav.item :key_3_2, 'Open Requests', '#'
+      sub_nav.item :key_3_3, 'Archive', '#'
+    end
+
+    primary.item :key_4, 'Settings', '/Settings', {:icon => 'icon-settings' }
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,

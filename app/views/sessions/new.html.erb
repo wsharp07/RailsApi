@@ -17,12 +17,14 @@
 
     <div class="form-actions">
       <%= f.button "Login", class: 'btn btn-success uppercase', type: 'submit' %>
-      <label class="rememberme check">
-        <input type="checkbox" name="remember" value="1"/>Remember </label>
+      <%= f.label  :remember_me, class: "rememberme check" do%>
+          <%= f.check_box :remember_me %>
+          <span>Remember me</span>
+      <% end %>
       <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
     </div>
 
-    <div class="login-options">
+    <!--<div class="login-options">
       <h4>Or login with</h4>
       <ul class="social-icons">
         <li>
@@ -38,10 +40,10 @@
           <a class="social-icon-color linkedin" data-original-title="Linkedin" href="javascript:;"></a>
         </li>
       </ul>
-    </div>
+    </div>-->
     <div class="create-account">
       <p>
-        <a href="javascript:;" id="register-btn" class="uppercase">Create an account</a>
+        <a href="/signup" id="register-btn" class="uppercase">Create an account</a>
       </p>
     </div>
 
@@ -61,41 +63,4 @@
     </div>
 <% end %>
 
-<!-- BEGIN REGISTRATION FORM -->
 
-<%= form_for(:register, url: '#', :html => {:class => 'register-form'}) do |f| %>
-    <h3>Sign Up</h3>
-    <p class="hint">
-      Enter your personal details below:
-    </p>
-    <div class="form-group">
-      <%= f.label :full_name, class: 'control-label visible-ie8 visible-ie9' %>
-      <%= f.text_field :full_name, class: 'form-control placeholder-no-fix', placeholder: 'Full Name' %>
-    </div>
-    <div class="form-group">
-      <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-      <%= f.label :email, class: 'control-label visible-ie8 visible-ie9' %>
-      <%= f.text_field :email, class: 'form-control placeholder-no-fix', placeholder: 'Email' %>
-    </div>
-    <p class="hint">
-      Enter your account details below:
-    </p>
-    <div class="form-group">
-      <%= f.label :username, class: 'control-label visible-ie8 visible-ie9' %>
-      <%= f.text_field :username, class: 'form-control placeholder-no-fix', autocomplete: 'off', placeholder: 'Username' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :register_password, class: 'control-label visible-ie8 visible-ie9' %>
-      <%= f.password_field :register_password, class: 'form-control placeholder-no-fix', autocomplete: 'off', placeholder: 'Password' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :rpassword, class: 'control-label visible-ie8 visible-ie9' %>
-      <%= f.password_field :rpassword, class: 'form-control placeholder-no-fix', autocomplete: 'off', placeholder: 'Re-type Your Password' %>
-    </div>
-    <div class="form-actions">
-      <%= f.button "Back", class: 'btn btn-default', type: 'button', id: 'register-back-btn' %>
-      <%= f.button "Submit", class: 'btn btn-success uppercase pull-right', type: 'submit' %>
-    </div>
-<% end %>
-
-<!-- END REGISTRATION FORM -->

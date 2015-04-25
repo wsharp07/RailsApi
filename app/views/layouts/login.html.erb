@@ -36,6 +36,10 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="page-md login">
+<!-- PAGE ALERTS -->
+<% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>" style="text-align:center"><%= message %></div>
+<% end %>
 <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 <div class="menu-toggler sidebar-toggler">
 </div>
@@ -51,6 +55,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <div class="content">
   <%= yield %>
 </div>
+<%= debug(params) if Rails.env.development? %>
 <div class="copyright">
   2014 © Metronic. Admin Dashboard Template.
 </div>

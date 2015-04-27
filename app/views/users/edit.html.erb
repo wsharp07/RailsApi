@@ -1,0 +1,26 @@
+<% content_for :title do %>
+    <h1>Edit User <small>user information</small></h1>
+<%end %>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption font-red-sunglo">
+          <i class="icon-settings font-red-sunglo"></i>
+          <span class="caption-subject bold uppercase">update your profile</span>
+        </div>
+      </div>
+      <div class="portlet-body form">
+        <%= form_for(@user) do |f| %>
+            <div class="form-body">
+              <%= render 'fields', f: f %>
+            </div>
+            <div class="form-actions noborder">
+              <%= f.submit "Save changes", class: "btn blue" %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

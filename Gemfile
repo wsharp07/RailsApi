@@ -15,6 +15,9 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer',  platforms: :ruby
 
 gem 'simple-navigation'
+gem 'faker'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 gem 'newrelic_rpm'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

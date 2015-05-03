@@ -52,7 +52,8 @@
     "respond": "~1.4.2",
     "excanvas": "*",
     "blockui": "*",
-    "jquery.cookie": "~1.4.1"
+    "jquery.cookie": "~1.4.1",
+    "simple-line-icons": "*"
   },
   "resolutions": {
     "jquery": ">= 1.9.0",

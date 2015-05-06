@@ -22,7 +22,7 @@ module RailsApi
     config.autoload_paths += %W(#{config.root}/app/navigation_renders )
 
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
-    config.assets.precompile += %w( application-layout.css application-print.css application-ie.css )
-    config.assets.precompile += %w( application-lt-ie9.js application-jquery.js application-layout.js login-layout.js )
+    config.assets.precompile += %w( application-layout.css application-print.css application-ie.css application-kendo.css )
+    config.assets.precompile += %w( application-lt-ie9.js application-jquery.js application-kendo.js application-layout.js login-layout.js )
   end
 end

@@ -31,6 +31,7 @@ License: You must have a valid license purchased only from themeforest(the above
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'application-layout', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'application-print', media: 'print', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application-kendo', media: 'all', 'data-turbolinks-track' => true %>
   <!-- END GLOBAL MANDATORY STYLES -->
   <%= javascript_include_tag 'application-jquery', 'data-turbolinks-track' => true %>
   <link rel="shortcut icon" href="favicon.ico"/>
@@ -493,6 +494,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
 <!-- END CORE PLUGINS -->
 <%= javascript_include_tag 'application-layout', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'application-kendo', 'data-turbolinks-track' => true %>
 <script>
     jQuery(document).ready(function() {
         Metronic.init(); // init metronic core components

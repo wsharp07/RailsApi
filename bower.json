@@ -53,7 +53,8 @@
     "excanvas": "*",
     "blockui": "*",
     "jquery.cookie": "~1.4.1",
-    "simple-line-icons": "*"
+    "simple-line-icons": "*",
+    "packery": "~1.4.1"
   },
   "resolutions": {
     "jquery": ">= 1.9.0",

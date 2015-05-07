@@ -1,0 +1,128 @@
+<% content_for :title do %>
+    <h1>RMA <small>list of all RMA's</small></h1>
+<%end %>
+
+<div id="grid"></div>
+
+<script>
+    $(document).ready(function () {
+        var data = [
+            {
+                "rma": "RMA-2013-001",
+                "serial": 4015895,
+                "hardwareType": "Feig",
+                "customer": "Matt LaFontaine",
+                "issued": "2013-04-10T04:00:00.000Z",
+                "reference": 195125,
+                "status": "OPEN"
+            },
+            {
+                "rma": "RMA-2013-002",
+                "serial": "50160-512",
+                "hardwareType": "Impinj",
+                "customer": "Matt LaFontaine",
+                "issued": "2013-04-10T04:00:00.000Z",
+                "reference": 189512,
+                "status": "OPEN"
+            },
+            {
+                "rma": "RMA-2013-003",
+                "serial": 149512,
+                "hardwareType": "Feig",
+                "customer": "Matt LaFontaine",
+                "issued": "2013-06-03T04:00:00.000Z",
+                "reference": 125805,
+                "status": "RECEIVED"
+            },
+            {
+                "rma": "RMA-2013-004",
+                "serial": 4125913,
+                "hardwareType": "Dell Latitude ST",
+                "customer": "Matt LaFontaine",
+                "issued": "2013-06-04T04:00:00.000Z",
+                "reference": 339692,
+                "status": "CLOSED"
+            },
+            {
+                "rma": "RMA-2013-005",
+                "serial": "1SADF12",
+                "hardwareType": "Feig",
+                "customer": "Jacob Gafner",
+                "issued": "2013-07-22T04:00:00.000Z",
+                "reference": 339692,
+                "status": "RECEIVED"
+            },
+            {
+                "rma": "RMA-2014-001",
+                "serial": "85AS124",
+                "hardwareType": "Impinj",
+                "customer": "Jacob Gafner",
+                "issued": "2014-03-11T04:00:00.000Z",
+                "reference": 339692,
+                "status": "OPEN"
+            },
+            {
+                "rma": "RMA-2014-002",
+                "serial": "14FA-14",
+                "hardwareType": "Microtouch",
+                "customer": "Jacob Gafner",
+                "issued": "2014-03-11T04:00:00.000Z",
+                "reference": 339692,
+                "status": "RETURNED"
+            }
+        ];
+
+        $("#grid").kendoGrid({
+            dataSource: {
+                data: data,
+                schema: {
+                    model: {
+                        fields: {
+                            rma: { type: "string" },
+                            serial: { type: "string" },
+                            hardwareType: { type: "string" },
+                            customer: { type: "string" },
+                            issued: { type: "date" },
+                            reference: { type: "string" },
+                            status: { type: "string" }
+                        }
+                    }
+                },
+                pageSize: 20
+            },
+            height: 450,
+            sortable: true,
+            filterable: {
+                extra: false
+            },
+            pageable: {
+                refresh: true,
+                pageSizes: true,
+                buttonCount: 5
+            },
+            columns: [{
+                field: "rma",
+                title: "RMA #"
+            }, {
+                field: "serial",
+                title: "Serial #"
+            }, {
+                field: "hardwareType",
+                title: "Hardware Type"
+            }, {
+                field: "customer",
+                title: "Customer"
+            },{
+                field: "issued",
+                title: "Issued",
+                template: "#= kendo.toString(kendo.parseDate(issued, 'yyyy-MM-dd'), 'MM/dd/yyyy') #"
+            },{
+                field: "reference",
+                title: "Reference #"
+            },{
+                field: "status",
+                title: "Status"
+            }]
+        });
+    });
+</script>

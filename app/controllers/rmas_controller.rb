@@ -1,5 +1,6 @@
-class RmaController < ApplicationController
+class RmasController < ApplicationController
   def new
+    @rma = Rma.new
   end
 
   def index

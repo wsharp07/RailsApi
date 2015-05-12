@@ -1,0 +1,33 @@
+<% content_for :title do %>
+    <h1>RMA <small>create a new RMA</small></h1>
+<%end %>
+
+
+<div class="portlet light">
+  <div class="portlet-title">
+  <div class="caption font-green-haze">
+    <i class="icon-pencil font-green-haze"></i>
+    <span class="caption-subject bold uppercase"> Create New RMA </span>
+  </div>
+  <div class="actions">
+    <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title="">
+    </a>
+  </div>
+</div>
+  <div class="portlet-body form">
+  <%= form_for(@rma, :html => {:class => 'form-horizontal'}) do |f| %>
+    <div class="form-body">
+          <%= render 'fields', f: f %>
+    </div>
+    <div class="form-actions">
+        <div class="row">
+          <div class="col-md-offset-2 col-md-10">
+            <%= f.button "Cancel", type:"button", class:"btn default" %>
+            <%= f.button "Submit", type:"submit", class:"btn blue" %>
+          </div>
+        </div>
+    </div>
+  <% end %>
+  </div>
+
+</div>

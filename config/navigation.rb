@@ -62,6 +62,7 @@ SimpleNavigation::Configuration.run do |navigation|
       sub.item :key_2_1, 'New', '/rmas/new'
       sub.item :key_2_2, 'View', '/rmas'
       sub.item :key_2_3, 'Search', '#'
+      sub.item :key_2_4, 'Manage', '/rmas/manage'
     end
 
     # Add an item which has a sub navigation (same params, but with block)

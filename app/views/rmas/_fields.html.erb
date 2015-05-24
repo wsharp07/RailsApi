@@ -1,12 +1,3 @@
-
-
-<div class="form-group form-md-line-input">
-  <%= f.label "RMA #", class:"col-md-2 control-label", for: :rma_number %>
-  <div class="col-md-10">
-    <%= f.text_field :rma_number, class: "form-control", :readonly => true %>
-  </div>
-</div>
-
 <div class="form-group form-md-line-input">
     <%= f.label "Serial #", class:"col-md-2 control-label", for: :serial_number %>
     <div class="col-md-10">
@@ -22,9 +13,9 @@
 </div>
 
 <div class="form-group form-md-line-input">
-  <%= f.label "Hardware Type", class:"col-md-2 control-label", for: :hardware_type %>
+  <%= f.label "Comments", class:"col-md-2 control-label", for: :comments %>
   <div class="col-md-10">
-    <%= f.select :hardware_type, Rma.hardware_types.keys.to_a,{ include_blank: true }, { class: "form-control" } %>
+    <%= f.text_area :comments, class: "form-control", placeholder: "Enter Comments" %>
   </div>
 </div>
 

@@ -1,13 +1,17 @@
 class Rma < ActiveRecord::Base
-  after_initialize :after_initialize
+  belongs_to :harware_types
 
+  # Callbacks
+  before_create :before_create
+
+  # Validations
+
+  # Enums
   enum status: [ :inactive, :active, :archived ]
-  enum hardware_type: [ :reader, :tablet ]
-
 
   private
 
-    def after_initialize
+    def before_create
       self.rma_number ||= generate_rma_number()
     end
 
@@ -31,8 +35,7 @@ class Rma < ActiveRecord::Base
       # Increment the RMA
       new_rma_array.push((current_rma_array[2].to_i + 1).to_s.rjust(3, '0'))
       return new_rma_array.join('-')
+
     end
-
-
 
 end

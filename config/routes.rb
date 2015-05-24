@@ -15,8 +15,13 @@ Rails.application.routes.draw do
 
   get    'signup' => 'users#new'
 
+  get    'rmas/manage' => 'rmas#manage'
+
+  get    'hardware_types/read' => 'hardware_types#read'
+
   resources :users
   resources :rmas
+  resources :hardware_types
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
 end

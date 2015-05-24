@@ -11,19 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150509163104) do
+ActiveRecord::Schema.define(version: 20150514225623) do
+
+  create_table "hardware_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "rmas", force: :cascade do |t|
-    t.integer  "customer_id"
-    t.string   "rma_number"
+    t.string   "rma_number",       null: false
     t.string   "serial_number"
-    t.integer  "hardware_type"
-    t.datetime "issued_on"
     t.string   "reference_number"
+    t.string   "tracking_number"
     t.integer  "status"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.string   "comments"
+    t.datetime "received_at"
+    t.datetime "closed_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "hardware_type_id"
   end
+
+  add_index "rmas", ["hardware_type_id"], name: "index_rmas_on_hardware_type_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name",              limit: 255

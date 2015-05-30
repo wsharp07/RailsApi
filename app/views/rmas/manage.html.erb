@@ -16,7 +16,7 @@
                 create: {
                     url: crudSrvBaseUrl,
                     dataType: "json",
-                    contentType: "application/json", //for kendo.stringify() / JSON.stringify()
+                    contentType: "application/json",
                     type: "POST"
                 },
                 update: {
@@ -24,7 +24,7 @@
                            return crudSrvBaseUrl + "/" + data.id;
                          },
                     dataType: "json",
-                    contentType: "application/json", //for kendo.stringify() / JSON.stringify()
+                    contentType: "application/json",
                     type: "PUT"
                 },
                 destroy: {
@@ -33,6 +33,19 @@
                          },
                     dataType: "json",
                     type: "DELETE"
+                },
+                parameterMap: function(data, operation) {
+
+                    // parameters sent on create
+                    if (operation === "create") {
+                        // only send the name parameter
+                        return kendo.stringify({name: data.name});
+                    }
+
+                    // parameters sent on update
+                    if (operation === "update") {
+                        return kendo.stringify({id: data.id, name: data.name});
+                    }
                 }
             },
             schema: {
@@ -55,7 +68,7 @@
             toolbar: ["create"],
             sortable: true,
             filterable: {
-                extra: false
+                mode: "row"
             },
             pageable: {
                 refresh: true,
@@ -64,7 +77,12 @@
             },
             columns: [{
                 field: "name",
-                title: "Hardware Type"
+                title: "Hardware Type",
+                filterable: {
+                    cell: {
+                        operator: "contains"
+                    }
+                }
             }, {
                 field: "created_at",
                 title: "Created At",

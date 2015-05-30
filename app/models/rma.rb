@@ -1,5 +1,5 @@
 class Rma < ActiveRecord::Base
-  belongs_to :harware_types
+  belongs_to :hardware_type
 
   # Callbacks
   before_create :before_create

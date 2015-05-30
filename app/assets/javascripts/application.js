@@ -10,8 +10,6 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery_ujs
-//= require jquery-ui
 //= require turbolinks
 //= require bootstrap/dist/js/bootstrap
 //= require bootstrap-hover-dropdown/bootstrap-hover-dropdown

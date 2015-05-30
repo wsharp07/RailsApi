@@ -1,3 +1,3 @@
-class Hardware_type < ActiveRecord::Base
+class HardwareType < ActiveRecord::Base
   has_many :rma
 end

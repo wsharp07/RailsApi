@@ -13,6 +13,13 @@
 </div>
 
 <div class="form-group form-md-line-input">
+  <%= f.label "Hardware Type", class:"col-md-2 control-label", for: :hardware_type %>
+  <div class="col-md-10">
+    <%= f.collection_select :hardware_type, HardwareType.order(:name),:id,:name, {:include_blank=> true}, { :class=>"form-control", :placeholder => 'Select Hardware Type' } %>
+  </div>
+</div>
+
+<div class="form-group form-md-line-input">
   <%= f.label "Comments", class:"col-md-2 control-label", for: :comments %>
   <div class="col-md-10">
     <%= f.text_area :comments, class: "form-control", placeholder: "Enter Comments" %>

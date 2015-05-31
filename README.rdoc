@@ -1,5 +1,7 @@
 == README
 
+[![Build Status](https://travis-ci.org/wsharp07/RailsVenture.svg?branch=rma-build)](https://travis-ci.org/wsharp07/RailsVenture)
+
 This started out as an experimentation with Rails API's, but it has expanded to much more.
 
 Goals

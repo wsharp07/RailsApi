@@ -40,6 +40,6 @@ class RmasController < ApplicationController
   private
 
   def rma_params
-    params.require(:rma).permit(:serial_number, :reference_number, :comments)
+    params.require(:rma).permit(:serial_number, :reference_number, :tracking_number, :comments)
   end
 end

@@ -136,7 +136,7 @@ $(document).ready ->
     dataSource: rmaDataSource
     height: 450
     sortable: true
-    filterable: extra: false
+    filterable: mode: 'row'
     pageable:
       refresh: true
       pageSizes: true
@@ -145,22 +145,27 @@ $(document).ready ->
       {
         field: 'rma_number'
         title: 'RMA #'
+        filterable: cell: operator: 'contains'
       }
       {
         field: 'serial_number'
         title: 'Serial #'
+        filterable: cell: operator: 'contains'
       }
       {
         field: 'reference_number'
         title: 'Reference #'
+        filterable: cell: operator: 'contains'
       }
       {
         field: 'tracking_number'
         title: 'Tracking #'
+        filterable: cell: operator: 'contains'
       }
       {
         field: 'comments'
         title: 'Comments'
+        filterable: cell: operator: 'contains'
       }
       {
         field: 'created_at'

@@ -4,7 +4,10 @@ class RmasController < ApplicationController
   end
 
   def index
-
+    respond_to do |format|
+      format.html
+      format.json { render :json => Rma.order(:rma_number)}
+    end
   end
 
   def create

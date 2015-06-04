@@ -1,98 +1,17 @@
 <% content_for :title do %>
     <h1>RMA <small>manage</small></h1>
 <%end %>
-<div id="grid"></div>
 
-<script>
-    $(document).ready(function () {
+<div class="portlet light bordered">
+    <div class="portlet-title">
+      <div class="caption font-green-sharp">
+        <i class="fa fa-cubes font-green-sharp"></i>
+        <span class="caption-subject bold uppercase">Hardware Types</span>
+      </div>
+    </div>
+    <div class="portlet-body">
+      <div id="hardwareTypeGrid"></div>
+    </div>
+</div>
 
-        var crudSrvBaseUrl = "/hardware_types";
-        var dataSource = new kendo.data.DataSource({
-            transport: {
-                read: {
-                    url: crudSrvBaseUrl,
-                    dataType: "json"
-                },
-                create: {
-                    url: crudSrvBaseUrl,
-                    dataType: "json",
-                    contentType: "application/json",
-                    type: "POST"
-                },
-                update: {
-                    url: function(data) {
-                           return crudSrvBaseUrl + "/" + data.id;
-                         },
-                    dataType: "json",
-                    contentType: "application/json",
-                    type: "PUT"
-                },
-                destroy: {
-                    url: function(data) {
-                           return crudSrvBaseUrl + "/" + data.id;
-                         },
-                    dataType: "json",
-                    type: "DELETE"
-                },
-                parameterMap: function(data, operation) {
-
-                    // parameters sent on create
-                    if (operation === "create") {
-                        // only send the name parameter
-                        return kendo.stringify({name: data.name});
-                    }
-
-                    // parameters sent on update
-                    if (operation === "update") {
-                        return kendo.stringify({id: data.id, name: data.name});
-                    }
-                }
-            },
-            schema: {
-                model: {
-                    id: "id",
-                    fields: {
-                        id: { editable: false},
-                        name: { type: "string", validation: { required: true } },
-                        created_at: { type: "date", editable: false },
-                        updated_at: { type: "date", editable: false }
-                    }
-                }
-            },
-            pageSize: 20
-        });
-
-        $("#grid").kendoGrid({
-            dataSource: dataSource,
-            height: 450,
-            toolbar: ["create"],
-            sortable: true,
-            filterable: {
-                mode: "row"
-            },
-            pageable: {
-                refresh: true,
-                pageSizes: true,
-                buttonCount: 5
-            },
-            columns: [{
-                field: "name",
-                title: "Hardware Type",
-                filterable: {
-                    cell: {
-                        operator: "contains"
-                    }
-                }
-            }, {
-                field: "created_at",
-                title: "Created At",
-                template: "#= kendo.toString(kendo.parseDate(created_at, 'yyyy-MM-dd'), 'MM/dd/yyyy') #"
-            }, {
-                field: "updated_at",
-                title: "Updated At",
-                template: "#= kendo.toString(kendo.parseDate(updated_at, 'yyyy-MM-dd'), 'MM/dd/yyyy') #"
-            }, { command: ["edit", "destroy"], title: "&nbsp;", width: "250px" }],
-            editable: "inline"
-        });
-    });
-</script>
+<%= javascript_include_tag "rma" %>

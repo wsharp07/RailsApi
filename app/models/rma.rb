@@ -5,6 +5,8 @@ class Rma < ActiveRecord::Base
   before_create :before_create
 
   # Validations
+  validates :serial_number, :presence => true
+  validates :reference_number, :presence => true
 
   # Enums
   enum status: [ :inactive, :active, :archived ]

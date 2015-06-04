@@ -15,7 +15,7 @@
   </div>
 </div>
   <div class="portlet-body form">
-  <%= form_for(@rma, :html => {:class => 'form-horizontal'}) do |f| %>
+  <%= form_for(@rma, :builder => Judge::FormBuilder, :html => {:class => 'form-horizontal'}) do |f| %>
     <div class="form-body">
           <%= render 'fields', f: f %>
     </div>
@@ -29,5 +29,7 @@
     </div>
   <% end %>
   </div>
-
 </div>
+
+<%= javascript_include_tag "rma" %>
+<%= stylesheet_link_tag "rma" %>

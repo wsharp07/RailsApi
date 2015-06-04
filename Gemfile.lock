@@ -86,6 +86,8 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (1.8.2)
+    judge (2.1.0)
+      rails (>= 3.1)
     launchy (2.4.3)
       addressable (~> 2.3)
     loofah (2.0.2)
@@ -210,6 +212,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
+  judge
   minitest
   minitest-reporters
   passenger

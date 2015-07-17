@@ -4,6 +4,10 @@ class RmaTest < ActiveSupport::TestCase
 
   def setup
     @rma = Rma.new()
+    @hardwareType = HardwareType.new()
+    @hardwareType.name = "Feig"
+    @rma.comments = "my test comment"
+    @rma.hardware_type = @hardwareType
   end
 
   test 'should be valid' do

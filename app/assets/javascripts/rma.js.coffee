@@ -87,6 +87,8 @@ rmaDataSource = new (kendo.data.DataSource)(
         type: 'string'
       comments:
         type: 'string'
+      hardware_type_name:
+        type: 'string'
       created_at:
         type: 'date'
       updated_at:
@@ -95,6 +97,11 @@ rmaDataSource = new (kendo.data.DataSource)(
 
 
 $(document).ready ->
+
+  # Reset Button Click
+  $('#btn-reset').on 'click', ->
+    $('#new_rma')[0].reset();
+
   $('#hardwareTypeGrid').kendoGrid
     dataSource: hardwareTypeDataSource
     height: 450
@@ -165,6 +172,11 @@ $(document).ready ->
       {
         field: 'comments'
         title: 'Comments'
+        filterable: cell: operator: 'contains'
+      }
+      {
+        field: 'hardware_type_name'
+        title: 'Hardware Type'
         filterable: cell: operator: 'contains'
       }
       {

@@ -6,6 +6,8 @@ class Rma < ActiveRecord::Base
 
   # Validations
   validates :serial_number, length: { minimum: 3 }, allow_blank: true
+  validates :hardware_type, presence: true
+  validates :comments, presence: true, length: { minimum: 5 }
 
   # Enums
   enum status: [ :inactive, :active, :archived ]

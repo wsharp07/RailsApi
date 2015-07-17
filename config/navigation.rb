@@ -61,7 +61,6 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :key_2, 'RMA', '#', { :html => { :icon => 'icon-wrench' } } do |sub|
       sub.item :key_2_1, 'New', '/rmas/new'
       sub.item :key_2_2, 'View', '/rmas'
-      sub.item :key_2_3, 'Search', '#'
       sub.item :key_2_4, 'Manage', '/rmas/manage'
     end
 

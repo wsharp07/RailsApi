@@ -1,2 +1,0 @@
-class RmaController < ApplicationController
-end

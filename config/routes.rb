@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  mount Judge::Engine => '/judge'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -11,9 +14,16 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
+
   get    'signup' => 'users#new'
 
+  get    'rmas/manage' => 'rmas#manage'
+
+  get    'hardware_types/read' => 'hardware_types#read'
+
   resources :users
+  resources :rmas
+  resources :hardware_types
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
 end

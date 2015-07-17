@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RmaControllerTest < ActionController::TestCase
+class HardwareTypesControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

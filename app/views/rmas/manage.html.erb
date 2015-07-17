@@ -1,0 +1,17 @@
+<% content_for :title do %>
+    <h1>RMA <small>manage</small></h1>
+<%end %>
+
+<div class="portlet light bordered">
+    <div class="portlet-title">
+      <div class="caption font-green-sharp">
+        <i class="fa fa-cubes font-green-sharp"></i>
+        <span class="caption-subject bold uppercase">Hardware Types</span>
+      </div>
+    </div>
+    <div class="portlet-body">
+      <div id="hardwareTypeGrid"></div>
+    </div>
+</div>
+
+<%= javascript_include_tag "rma" %>

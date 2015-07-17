@@ -1,10 +1,9 @@
 class CustomBreadcrumbs < SimpleNavigation::Renderer::Base
   def render(item_container)
     # we don't want anything if there are no crumbs
-    return '' unless number_of_crumbs(item_container) > 1
-    content = a_tags(item_container).join(join_with)
-    content_tag(:li,
-                prefix_for(content) + content)
+    return '' unless number_of_crumbs(item_container) > 0
+    content = get_crumbs(item_container)
+    content_tag(:li, build_crumbs(content))
   end
 
   # Look up the number of crumbs
@@ -18,19 +17,32 @@ class CustomBreadcrumbs < SimpleNavigation::Renderer::Base
   end
   protected
 
-  def a_tags(item_container)
+  def get_crumbs(item_container)
     item_container.items.each_with_object([]) do |item, list|
       next unless item.selected?
-      list << tag_for(item)
+      list << {name: item.name, url: item.url}
 
       if include_sub_navigation?(item)
-        list.concat a_tags(item.sub_navigation)
+        data = get_crumbs(item.sub_navigation)
+        list << data[0]
       end
     end
   end
 
-  def join_with
-    @join_with ||= options[:join_with] || ' '
+  def build_crumbs(crumbs)
+    return unless crumbs.length > 0
+
+    tagArray = Array.new
+    len = crumbs.length - 1
+    for i in 0..len
+      tagArray.push('<li>')
+      tagArray.push('<a href="' + crumbs[i][:url].to_s + '">')
+      tagArray.push(crumbs[i][:name].to_s)
+      tagArray.push('</a>')
+      tagArray.push('<i class="fa fa-circle"></i>') unless i == len
+      tagArray.push('</li>')
+    end
+    return tagArray.join('')
   end
 
   def suppress_link?(item)

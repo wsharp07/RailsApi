@@ -11,9 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514225623) do
+ActiveRecord::Schema.define(version: 20150719210114) do
 
   create_table "hardware_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "request_types", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -34,6 +40,17 @@ ActiveRecord::Schema.define(version: 20150514225623) do
   end
 
   add_index "rmas", ["hardware_type_id"], name: "index_rmas_on_hardware_type_id"
+
+  create_table "time_offs", force: :cascade do |t|
+    t.integer  "user_id",            null: false
+    t.integer  "request_type_id",    null: false
+    t.datetime "request_start_date", null: false
+    t.datetime "request_end_date",   null: false
+    t.integer  "status",             null: false
+    t.string   "comments"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name",              limit: 255

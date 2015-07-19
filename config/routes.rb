@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :time_offs
   mount Judge::Engine => '/judge'
 
   get 'password_resets/new'

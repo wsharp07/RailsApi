@@ -26,5 +26,7 @@ module RailsApi
     config.assets.precompile += %w( application-lt-ie9.js application-jquery.js application-kendo.js application-layout.js login-layout.js )
     config.assets.precompile += %w( rma.js )
     config.assets.precompile += %w( rma.css )
+    config.assets.precompile += %w( time_offs.js )
+    config.assets.precompile += %w( time_offs.css )
   end
 end

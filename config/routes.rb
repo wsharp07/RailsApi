@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :request_types
   resources :time_offs
   mount Judge::Engine => '/judge'
 
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :rmas
+  resources :time_offs
   resources :hardware_types
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]

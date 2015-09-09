@@ -4,7 +4,16 @@ class TimeOffsController < ApplicationController
   # GET /time_offs
   # GET /time_offs.json
   def index
-    @time_offs = TimeOff.all
+    respond_to do |format|
+      format.html
+      format.json {
+
+        render :json => TimeOff.joins('LEFT OUTER JOIN request_types ON time_offs.request_type_id = request_types.id')
+                            .select(
+                                'time_offs.id,
+                                 time_offs.comments,
+                                 request_types.name as request_type_name') }
+    end
   end
 
   # GET /time_offs/1
@@ -17,48 +26,8 @@ class TimeOffsController < ApplicationController
     @time_off = TimeOff.new
   end
 
-  # GET /time_offs/1/edit
-  def edit
-  end
+  def manage
 
-  # POST /time_offs
-  # POST /time_offs.json
-  def create
-    @time_off = TimeOff.new(time_off_params)
-
-    respond_to do |format|
-      if @time_off.save
-        format.html { redirect_to @time_off, notice: 'Time off was successfully created.' }
-        format.json { render :show, status: :created, location: @time_off }
-      else
-        format.html { render :new }
-        format.json { render json: @time_off.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /time_offs/1
-  # PATCH/PUT /time_offs/1.json
-  def update
-    respond_to do |format|
-      if @time_off.update(time_off_params)
-        format.html { redirect_to @time_off, notice: 'Time off was successfully updated.' }
-        format.json { render :show, status: :ok, location: @time_off }
-      else
-        format.html { render :edit }
-        format.json { render json: @time_off.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /time_offs/1
-  # DELETE /time_offs/1.json
-  def destroy
-    @time_off.destroy
-    respond_to do |format|
-      format.html { redirect_to time_offs_url, notice: 'Time off was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private

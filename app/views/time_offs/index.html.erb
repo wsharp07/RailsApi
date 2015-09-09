@@ -1,25 +1,8 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title do %>
+    <h1>Time Off <small>list of all Time Off's</small></h1>
+<%end %>
 
-<h1>Listing Time Offs</h1>
+<div id="timeOffGrid"></div>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @time_offs.each do |time_off| %>
-      <tr>
-        <td><%= link_to 'Show', time_off %></td>
-        <td><%= link_to 'Edit', edit_time_off_path(time_off) %></td>
-        <td><%= link_to 'Destroy', time_off, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Time off', new_time_off_path %>
+<%= javascript_include_tag "time_offs" %>
+<%= stylesheet_link_tag "time_offs" %>

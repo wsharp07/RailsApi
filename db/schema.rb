@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719210114) do
+ActiveRecord::Schema.define(version: 20150723021702) do
 
   create_table "hardware_types", force: :cascade do |t|
     t.string   "name"
@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20150719210114) do
   end
 
   create_table "request_types", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "rmas", force: :cascade do |t|

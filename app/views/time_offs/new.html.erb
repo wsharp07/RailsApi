@@ -2,6 +2,7 @@
     <h1>Time Off <small>create new request</small></h1>
 <%end %>
 
+<%= stylesheet_link_tag "application-date-picker" %>
 
 <div class="portlet light">
   <div class="portlet-title">
@@ -30,3 +31,47 @@
     <% end %>
   </div>
 </div>
+
+<%= javascript_include_tag "application-date-picker" %>
+<%= javascript_include_tag "time_offs" %>
+<%= stylesheet_link_tag "time_offs" %>
+
+<script type="text/javascript">
+  "use strict";
+  var viewModel = {
+      startDate: null,
+      endDate: null,
+      daysRequested: ko.observable("0")
+  };
+
+  function EvalDaysRequested(){
+      if(viewModel.startDate && viewModel.endDate){
+          var res = moment(viewModel.endDate).businessDiff(moment(viewModel.startDate));
+          viewModel.daysRequested(res+1);
+      }
+  }
+
+  $(document).ready(function(){
+
+      $("#time_off_request_start_date").pikaday({
+          format: 'MM/DD/YYYY',
+          disableWeekends: true,
+          onSelect: function() {
+              viewModel.startDate = this.getMoment();
+              EvalDaysRequested();
+          }
+      });
+
+      $("#time_off_request_end_date").pikaday({
+          format: 'MM/DD/YYYY',
+          disableWeekends: true,
+          onSelect: function() {
+              viewModel.endDate = this.getMoment();
+              EvalDaysRequested();
+          }
+      });
+
+      ko.applyBindings(viewModel);
+
+  });
+</script>

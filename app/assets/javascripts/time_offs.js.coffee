@@ -39,12 +39,35 @@ $(document).ready ->
     dataSource: timeOffDataSource
     height: 450
     sortable: true
-    filterable: mode: 'row'
+    filterable: true
     pageable:
       refresh: true
       pageSizes: true
       buttonCount: 5
     columns: [
+      {
+        field: 'id',
+        title: 'Request #'
+      },
+      {
+        field: 'request_type_name',
+        title: 'Type'
+      },
+      {
+        field: 'request_start_date',
+        title: 'Start On',
+        template: '#= kendo.toString(kendo.parseDate(request_start_date, \'yyyy-MM-dd\'), \'MM/dd/yyyy\') #'
+      },
+      {
+        field: 'request_end_date',
+        title: 'Back On',
+        template: '#= kendo.toString(kendo.parseDate(request_end_date, \'yyyy-MM-dd\'), \'MM/dd/yyyy\') #'
+      },
+      {
+        field: 'status',
+        title: 'Status',
+        template: '#= status.charAt(0).toUpperCase() + status.substring(1) #'
+      },
       {
         field: 'comments'
         title: 'Comments'
@@ -52,3 +75,6 @@ $(document).ready ->
       }
     ]
   return
+
+# Form Validations
+judgeValidateForm $('#new_time_off')

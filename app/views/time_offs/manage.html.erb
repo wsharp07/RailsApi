@@ -1,0 +1,17 @@
+<% content_for :title do %>
+    <h1>Time Off Request Types <small>manage</small></h1>
+<%end %>
+
+<div class="portlet light bordered">
+  <div class="portlet-title">
+    <div class="caption font-green-sharp">
+      <i class="fa fa-cubes font-green-sharp"></i>
+      <span class="caption-subject bold uppercase">Request Types</span>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div id="timeOffRequestTypesGrid"></div>
+  </div>
+</div>
+
+<%= javascript_include_tag "request_types" %>

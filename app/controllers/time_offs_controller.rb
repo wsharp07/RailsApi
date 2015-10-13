@@ -11,6 +11,9 @@ class TimeOffsController < ApplicationController
         render :json => TimeOff.joins('LEFT OUTER JOIN request_types ON time_offs.request_type_id = request_types.id')
                             .select(
                                 'time_offs.id,
+                                 time_offs.request_start_date,
+                                 time_offs.request_end_date,
+                                 time_offs.status,
                                  time_offs.comments,
                                  request_types.name as request_type_name') }
     end
@@ -26,6 +29,17 @@ class TimeOffsController < ApplicationController
     @time_off = TimeOff.new
   end
 
+  def create
+    @time_off = TimeOff.new(time_off_params)
+    @time_off.status = TimeOff.statuses[:open]
+    if @time_off.save
+      flash[:success] = "Time Off Request #'#{@time_off.id}' Created Successfully!"
+      redirect_to root_path
+    else
+      render action: :new
+    end
+  end
+
   def manage
 
   end
@@ -36,8 +50,11 @@ class TimeOffsController < ApplicationController
       @time_off = TimeOff.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def time_off_params
-      params[:time_off]
+      params.require(:time_off).permit(:request_start_date, :request_end_date, :request_type, :user_id, :comments).tap do |w|
+        w[:request_type] = RequestType.find(w[:request_type].to_i) if w[:request_type]
+        w[:request_start_date] = Date.strptime(w[:request_start_date], "%m/%d/%Y")
+        w[:request_end_date] = Date.strptime(w[:request_end_date], "%m/%d/%Y")
+      end
     end
 end

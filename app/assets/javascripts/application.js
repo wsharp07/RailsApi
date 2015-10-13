@@ -24,3 +24,6 @@
 //= require underscore
 //= require json2
 //= require judge
+//= require moment/min/moment.min
+//= require momentjs-business/momentjs-business
+//= require knockout/dist/knockout

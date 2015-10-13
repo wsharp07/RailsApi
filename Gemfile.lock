@@ -88,7 +88,7 @@ GEM
     passenger (5.0.14)
       rack
       rake (>= 0.8.1)
-    psych (2.0.13)
+    psych (2.0.15)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)

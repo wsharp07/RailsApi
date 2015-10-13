@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   resources :request_types
-  resources :time_offs
   mount Judge::Engine => '/judge'
 
   get 'password_resets/new'
@@ -20,6 +19,7 @@ Rails.application.routes.draw do
   get    'signup' => 'users#new'
 
   get    'rmas/manage' => 'rmas#manage'
+  get    'time_offs/manage' => 'time_offs#manage'
 
   get    'hardware_types/read' => 'hardware_types#read'
 

@@ -9,12 +9,14 @@ class TimeOffsController < ApplicationController
       format.json {
 
         render :json => TimeOff.joins('LEFT OUTER JOIN request_types ON time_offs.request_type_id = request_types.id')
+                            .joins('INNER JOIN users ON time_offs.user_id = users.id')
                             .select(
                                 'time_offs.id,
                                  time_offs.request_start_date,
                                  time_offs.request_end_date,
                                  time_offs.status,
                                  time_offs.comments,
+                                 users.name as users_name,
                                  request_types.name as request_type_name') }
     end
   end

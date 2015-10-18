@@ -67,6 +67,10 @@ $(document).ready ->
         template: '#= status.charAt(0).toUpperCase() + status.substring(1) #'
       },
       {
+        field: 'users_name',
+        title: 'User'
+      },
+      {
         field: 'comments'
         title: 'Comments'
         filterable: cell: operator: 'contains'

@@ -41,6 +41,7 @@
   var viewModel = {
       startDate: null,
       endDate: null,
+      endDateObj: null,
       daysRequested: ko.observable("0")
   };
 
@@ -53,18 +54,22 @@
 
   $(document).ready(function(){
 
-      $("#time_off_request_start_date").pikaday({
+      viewModel.startDateObj = $("#time_off_request_start_date").pikaday({
           format: 'MM/DD/YYYY',
           disableWeekends: true,
+          minDate: moment().toDate(),
           onSelect: function() {
               viewModel.startDate = this.getMoment();
               EvalDaysRequested();
+              viewModel.endDateObj.setMinDate(viewModel.startDate.add(1,'days').toDate())
           }
       });
 
-      $("#time_off_request_end_date").pikaday({
+      viewModel.endDateObj = new Pikaday({
+          field: document.getElementById('time_off_request_end_date'),
           format: 'MM/DD/YYYY',
           disableWeekends: true,
+          minDate: moment().toDate(),
           onSelect: function() {
               viewModel.endDate = this.getMoment();
               EvalDaysRequested();

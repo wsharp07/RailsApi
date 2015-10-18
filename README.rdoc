@@ -1,6 +1,6 @@
 == README
 
-{<img src="https://travis-ci.org/wsharp07/RailsVenture.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/wsharp07/RailsVenture]
+{<img src="https://travis-ci.org/wsharp07/RailsVenture.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/wsharp07/RailsVenture] {<img src="https://coveralls.io/repos/wsharp07/RailsVenture/badge.svg?branch=master&service=github" alt="Coverage Status" />}[https://coveralls.io/github/wsharp07/RailsVenture?branch=master]
 
 This started out as an experimentation with Rails API's, but it has expanded to much more.
 

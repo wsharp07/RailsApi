@@ -29,7 +29,7 @@ judgeValidateForm = function(frm) {
         e.preventDefault();
         $(frm).find('.help-block').remove();
         defers = [];
-        $(frm).find('.form-control').each(function(idx, elm) {
+        $(frm).find('.form-control[data-klass]').each(function(idx, elm) {
             defers.push(asyncValidateInput(elm));
         });
         $.when.apply($, defers).done(function() {
@@ -41,3 +41,14 @@ judgeValidateForm = function(frm) {
         });
     });
 };
+
+$(document).ready(function(){
+    judge.eachValidators.not_in_past = function(options, messages) {
+        var errorMessages = [];
+
+        if ((this.value !== "") && this.value < moment().format('MM/DD/YYYY')) {
+            errorMessages.push(messages.not_in_past);
+        }
+        return new judge.Validation(errorMessages);
+    };
+});

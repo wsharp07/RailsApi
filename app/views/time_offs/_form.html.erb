@@ -1,0 +1,17 @@
+<%= form_for(@time_off) do |f| %>
+  <% if @time_off.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@time_off.errors.count, "error") %> prohibited this time_off from being saved:</h2>
+
+      <ul>
+      <% @time_off.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

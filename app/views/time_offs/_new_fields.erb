@@ -1,0 +1,65 @@
+<div class="form-group form-md-line-input">
+  <%= f.label "Today's Date", class:"col-md-2 control-label", for: "todaysDate" %>
+  <div class="col-md-10">
+    <div class="form-control form-control-static">
+      <%= Date.today %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group form-md-line-input">
+  <%= f.label "Request Type", class:"col-md-2 control-label", for: :request_start_date %>
+  <div class="col-md-10">
+    <%= f.collection_select :request_type,
+                            RequestType.order(:name),
+                            :id,
+                            :name,
+                            {:include_blank=> true, :validate => true},
+                            { :class=>"form-control", :placeholder => 'Select Request Type' }
+    %>
+  </div>
+</div>
+
+<div class="form-group form-md-line-input">
+  <%= f.label "Start Date", class:"col-md-2 control-label", for: :request_start_date %>
+  <div class="col-md-10">
+    <%= f.text_field :request_start_date,
+                    class: "form-control form-control-inline input-medium date-picker",
+                     size: 16,
+                    :validate => true
+    %>
+  </div>
+</div>
+
+<div class="form-group form-md-line-input">
+  <%= f.label "Return Date", class:"col-md-2 control-label", for: :request_end_date %>
+  <div class="col-md-10">
+    <%= f.text_field :request_end_date,
+                     class: "form-control form-control-inline input-medium date-picker",
+                     size: 16,
+                     :validate => true
+    %>
+  </div>
+</div>
+
+<div class="form-group form-md-line-input">
+  <%= f.label "Days Requested", class:"col-md-2 control-label", for: "daysRequested" %>
+  <div class="col-md-10">
+    <div class="form-control form-control-static">
+      <span data-bind="text: daysRequested"></span>
+    </div>
+  </div>
+</div>
+
+<div class="form-group form-md-line-input">
+  <%= f.label "Comments", class:"col-md-2 control-label", for: :comments %>
+  <div class="col-md-10">
+    <%= f.text_area :comments,
+                     class: "form-control",
+                     placeholder: "Enter Comments",
+                     :validate => true
+    %>
+  </div>
+</div>
+
+<%= f.hidden_field :user_id, :value => 101 %>

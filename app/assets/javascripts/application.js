@@ -10,7 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require turbolinks
+// require turbolinks
 //= require extensions
 //= require judge-validations
 //= require bootstrap/dist/js/bootstrap
@@ -24,3 +24,6 @@
 //= require underscore
 //= require json2
 //= require judge
+//= require moment/min/moment.min
+//= require momentjs-business/momentjs-business
+//= require knockout/dist/knockout

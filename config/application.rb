@@ -24,7 +24,12 @@ module RailsApi
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
     config.assets.precompile += %w( application-layout.css application-print.css application-ie.css application-kendo.css )
     config.assets.precompile += %w( application-lt-ie9.js application-jquery.js application-kendo.js application-layout.js login-layout.js )
+    config.assets.precompile += %w( application-date-picker.css )
+    config.assets.precompile += %w( application-date-picker.js )
     config.assets.precompile += %w( rma.js )
     config.assets.precompile += %w( rma.css )
+    config.assets.precompile += %w( time_offs.js )
+    config.assets.precompile += %w( time_offs.css )
+    config.assets.precompile += %w( request_types.js )
   end
 end

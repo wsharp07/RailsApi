@@ -1,0 +1,83 @@
+<% content_for :title do %>
+    <h1>Time Off <small>create new request</small></h1>
+<%end %>
+
+<%= stylesheet_link_tag "application-date-picker" %>
+
+<div class="portlet light">
+  <div class="portlet-title">
+    <div class="caption font-green-haze">
+      <i class="icon-pencil font-green-haze"></i>
+      <span class="caption-subject bold uppercase"> New Time Off Request </span>
+    </div>
+    <div class="actions">
+      <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title="">
+      </a>
+    </div>
+  </div>
+  <div class="portlet-body form">
+    <%= form_for(@time_off, :builder => Judge::FormBuilder, :html => {:class => 'form-horizontal'}) do |f| %>
+        <div class="form-body">
+          <%= render 'new_fields', f: f %>
+        </div>
+        <div class="form-actions">
+          <div class="row">
+            <div class="col-md-offset-2 col-md-10">
+              <%= f.button "Reset", id:"btn-reset", type:"button", class:"btn default" %>
+              <%= f.button "Submit", type:"submit", class:"btn blue" %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+<%= javascript_include_tag "application-date-picker" %>
+<%= javascript_include_tag "time_offs" %>
+<%= stylesheet_link_tag "time_offs" %>
+
+
+<script type="text/javascript">
+  "use strict";
+  var viewModel = {
+      startDate: null,
+      endDate: null,
+      endDateObj: null,
+      daysRequested: ko.observable("0")
+  };
+
+  function EvalDaysRequested(){
+      if(viewModel.startDate && viewModel.endDate){
+          var res = moment(viewModel.endDate).businessDiff(moment(viewModel.startDate));
+          viewModel.daysRequested(res+1);
+      }
+  }
+
+  $(document).ready(function(){
+
+      viewModel.startDateObj = $("#time_off_request_start_date").pikaday({
+          format: 'MM/DD/YYYY',
+          disableWeekends: true,
+          minDate: moment().toDate(),
+          onSelect: function() {
+              viewModel.startDate = this.getMoment();
+              EvalDaysRequested();
+              viewModel.endDateObj.setMinDate(viewModel.startDate.add(1,'days').toDate())
+          }
+      });
+
+      viewModel.endDateObj = new Pikaday({
+          field: document.getElementById('time_off_request_end_date'),
+          format: 'MM/DD/YYYY',
+          disableWeekends: true,
+          minDate: moment().toDate(),
+          onSelect: function() {
+              viewModel.endDate = this.getMoment();
+              EvalDaysRequested();
+          }
+      });
+
+      ko.applyBindings(viewModel);
+
+  });
+</script>

@@ -20,7 +20,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'psych'
 gem 'responders'
-gem 'travis'
+#gem 'travis'
 gem 'judge'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

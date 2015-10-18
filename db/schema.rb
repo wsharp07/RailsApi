@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723021702) do
+ActiveRecord::Schema.define(version: 20151018041136) do
 
   create_table "hardware_types", force: :cascade do |t|
     t.string   "name"
@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 20150723021702) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",              limit: 255
     t.string   "email",             limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -66,6 +65,8 @@ ActiveRecord::Schema.define(version: 20150723021702) do
     t.datetime "activated_at"
     t.string   "reset_digest",      limit: 255
     t.datetime "reset_sent_at"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
 end

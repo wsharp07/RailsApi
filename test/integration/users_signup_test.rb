@@ -10,7 +10,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     get signup_path
 
     assert_no_difference 'User.count' do
-      post users_path, user: { name:  "",
+      post users_path, user: { first_name:  "",
                                email: "user@invalid",
                                username: "user",
                                password:              "foo",
@@ -22,7 +22,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   test "valid signup information with account activation" do
     get signup_path
     assert_difference 'User.count', 1 do
-      post users_path, user: { name:  "Example User",
+      post users_path, user: { first_name:  "Example",
+                               last_name: "User",
                                email: "user@example.com",
                                username: "euser",
                                password:              "password",

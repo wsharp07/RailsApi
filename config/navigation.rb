@@ -69,7 +69,6 @@ SimpleNavigation::Configuration.run do |navigation|
       # Add an item to the sub navigation (same params again)
       sub_nav.item :key_3_1, 'New Request', '/time_offs/new'
       sub_nav.item :key_3_2, 'Open Requests', '/time_offs'
-      sub_nav.item :key_3_3, 'Archive', '/time_offs/archive'
       sub_nav.item :key_3_4, 'Manage Request Types', '/time_offs/manage'
     end
 

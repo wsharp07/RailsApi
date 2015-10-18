@@ -45,7 +45,8 @@ $(document).ready ->
     columns: [
       {
         field: 'id',
-        title: 'Request #'
+        title: '#'
+        width: '75px'
       },
       {
         field: 'request_type_name',
@@ -64,17 +65,20 @@ $(document).ready ->
       {
         field: 'status',
         title: 'Status',
-        template: '#= status.charAt(0).toUpperCase() + status.substring(1) #'
+        template: '<span class="label label-info">#= status.charAt(0).toUpperCase() + status.substring(1) #</span>'
       },
       {
         field: 'users_name',
-        title: 'User'
+        title: 'Requested By'
       },
       {
         field: 'comments'
         title: 'Comments'
         filterable: cell: operator: 'contains'
       }
+      #{
+      #  template: "<button class='btn green'><i class='fa fa-folder-open-o'></i>&nbsp;View</button>"
+      #}
     ]
   return
 

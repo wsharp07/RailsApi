@@ -1,6 +1,6 @@
 == README
 
-{<img src="https://travis-ci.org/wsharp07/RailsVenture.svg?branch=rma-build" alt="Build Status" />}[https://travis-ci.org/wsharp07/RailsVenture]
+{<img src="https://travis-ci.org/wsharp07/RailsVenture.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/wsharp07/RailsVenture]
 
 This started out as an experimentation with Rails API's, but it has expanded to much more.
 

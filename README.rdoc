@@ -1,4 +1,4 @@
-== RailsVenture
+== RailsVenture (codename: synarii)
 
 {<img src="https://travis-ci.org/wsharp07/RailsVenture.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/wsharp07/RailsVenture] {<img src="https://coveralls.io/repos/wsharp07/RailsVenture/badge.svg?branch=master&service=github" alt="Coverage Status" />}[https://coveralls.io/github/wsharp07/RailsVenture?branch=master]
 
